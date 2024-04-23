@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FrutaComponent } from './fruta/fruta.component';
 
@@ -14,4 +14,16 @@ export class AppComponent {
   isTrue = true;
   usuarioLogado = 'Cliente';
   listaDeFrustas = ['Uva', 'Banana', 'Laranja'];
+
+  signalTeste = signal({nome: 'Francelino', idade: 30});
+
+  executar() {
+    // Set: Define o signal como um novo valor absoluto.
+    // this.signalTeste.set(10);
+
+    // Update: Define o signal com base no valor atual.
+     this.signalTeste.update(atual => {
+       return { ...atual, idade: 35 };
+     });
+  }
 }
