@@ -48,19 +48,19 @@
 
 <!--TESTANDO O @for-->
 
-<!--ANTES DO ANGULAR 17-->
+<!--ANTES DO ANGULAR 17
 <h1>Testando o for antes do Angular 17</h1>
 <div *ngFor="let fruta of listaDeFrustas">
   <p>{{fruta}}</p>
 </div>
-
+-->
 
 <h1>Testando o for Angular 17</h1>
 @for (fruta of listaDeFrustas; track $index) {
   <p>{{fruta}}</p>
 }
 
-<!--Testando alguns recursos do for-->
+<!--Testando alguns recursos do for
 
 <h1>Testando o for com o last</h1>
 <div *ngFor="let fruta of listaDeFrustas; let isLast = last">
@@ -69,6 +69,7 @@
     <p> >>> Fim da Lista <<< </p>
   </ng-template>
 </div>
+-->
 
 <h1>Testando o for com o last e empty Angular 17</h1>
 @for (fruta of listaDeFrustas; track $index; let last = $last) {
@@ -79,3 +80,25 @@
 } @empty {
   <p>Lista vazia</p>
 }
+
+<h1 #titulo>Testando o defer</h1>
+
+@defer (on viewport(titulo)) {
+  <app-fruta></app-fruta>
+} @placeholder {
+  <p>Carregando...</p>
+}
+
+@defer (on hover(titulo)) {
+  <app-fruta></app-fruta>
+} @placeholder {
+  <p>Carregando...</p>
+}
+
+
+<h1>Testando o Input Value Transforms</h1>
+<!--Antes do Angular 17-->
+<app-fruta [disabled]="true"></app-fruta>
+
+<!--Angular 17-->
+<app-fruta disabledAngular17></app-fruta>
