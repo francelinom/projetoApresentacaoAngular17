@@ -12,4 +12,5 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   isTrue = true;
   usuarioLogado = 'Cliente';
+  listaDeFrustas = ['Uva', 'Banana', 'Laranja'];
 }

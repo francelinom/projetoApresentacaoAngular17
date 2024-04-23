@@ -45,3 +45,37 @@
     <p>Usuario é: {{usuarioLogado}}</p>
   }
 }
+
+<!--TESTANDO O @for-->
+
+<!--ANTES DO ANGULAR 17-->
+<h1>Testando o for antes do Angular 17</h1>
+<div *ngFor="let fruta of listaDeFrustas">
+  <p>{{fruta}}</p>
+</div>
+
+
+<h1>Testando o for Angular 17</h1>
+@for (fruta of listaDeFrustas; track $index) {
+  <p>{{fruta}}</p>
+}
+
+<!--Testando alguns recursos do for-->
+
+<h1>Testando o for com o last</h1>
+<div *ngFor="let fruta of listaDeFrustas; let isLast = last">
+  <p>{{fruta}}</p>
+  <ng-template [ngIf]="isLast">
+    <p> >>> Fim da Lista <<< </p>
+  </ng-template>
+</div>
+
+<h1>Testando o for com o last e empty Angular 17</h1>
+@for (fruta of listaDeFrustas; track $index; let last = $last) {
+  <p>{{fruta}}</p>
+  @if (last) {
+    <p> >>> Fim da Lista <<< </p>
+  }
+} @empty {
+  <p>Lista vazia</p>
+}
