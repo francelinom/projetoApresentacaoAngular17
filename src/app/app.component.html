@@ -13,10 +13,35 @@
 </div>
 -->
 
-<!--NGULAR 17-->
 <h1>Testando o if e else Angular 17</h1>
 @if (isTrue) {
   <h4>É verdade</h4>
 } @else {
   <h4>Não é verdade</h4>
+}
+
+<!--TESTANDO O @switch-->
+
+<!--ANTES DO ANGULAR 17
+<h1>Testando o switch antes do Angular 17</h1>
+<div [ngSwitch]="usuarioLogado">
+  <p *ngSwitchCase="'ADM'">Usuario é: {{usuarioLogado}}</p>
+  <p *ngSwitchCase="'Cliente'">Usuario é: {{usuarioLogado}}</p>
+  <p *ngSwitchCase="'Operador'">Usuario é: {{usuarioLogado}}</p>
+</div>
+-->
+
+<h1>Testando o switch Angular 17</h1>
+@switch (usuarioLogado) {
+  @case('ADM') {
+    <p>Usuario é: {{usuarioLogado}}</p>
+  }
+
+  @case('Cliente') {
+    <p>Usuario é: {{usuarioLogado}}</p>
+  }
+
+  @case('Operador') {
+    <p>Usuario é: {{usuarioLogado}}</p>
+  }
 }
