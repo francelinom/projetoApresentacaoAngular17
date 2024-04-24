@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FrutaComponent } from './fruta/fruta.component';
 
@@ -15,15 +15,29 @@ export class AppComponent {
   usuarioLogado = 'Cliente';
   listaDeFrustas = ['Uva', 'Banana', 'Laranja'];
 
-  signalTeste = signal({nome: 'Francelino', idade: 30});
+  signalTeste = signal(1);
+
+  /**
+   * Computer signals são criados em base de outros signals.
+   */
+  computedTeste = computed(() => {
+    console.log('computedTeste');
+    return `${this.signalTeste()} computed`
+  } );
 
   executar() {
     // Set: Define o signal como um novo valor absoluto.
     // this.signalTeste.set(10);
 
     // Update: Define o signal com base no valor atual.
-     this.signalTeste.update(atual => {
-       return { ...atual, idade: 35 };
-     });
+    // this.signalTeste.update(atual => {
+    //   return { ...atual, idade: 35 };
+    // });
+
+    this.signalTeste.update(atual => atual + 1);
+  }
+
+  funcaoTeste() {
+    return console.log('funcaoTeste');
   }
 }

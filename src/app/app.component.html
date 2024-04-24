@@ -107,6 +107,14 @@
 <!-- Testando Signals-->
 <h1>Testando o Signals</h1>
 
-<p>Signal -> {{signalTeste() | json}}</p>
+<p>Signal -> {{signalTeste()}}</p>
+
+<p>computed -> {{computedTeste()}}</p>
+
+<!--Exemplo para não chamar funções no template
+<p>
+  {{funcaoTeste()}}
+</p>
+-->
 
 <button (click)="executar()">Clique</button>
