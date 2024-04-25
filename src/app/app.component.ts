@@ -16,14 +16,22 @@ export class AppComponent {
   listaDeFrustas = ['Uva', 'Banana', 'Laranja'];
 
   signalTeste = signal(1);
+  mostrarContador = signal(true);
 
   /**
    * Computer signals são criados em base de outros signals.
+   * O computedTeste também é uma dependencia do mostrarContador e quando o mostrarContador
+   * for false o signal vai notificar
+   * e o computedTeste não é acionado porque o signalTeste deixou de ser uma dependencia
    */
   computedTeste = computed(() => {
     console.log('computedTeste');
-    return `${this.signalTeste()} computed`
-  } );
+    if (this.mostrarContador()) {
+      return `${this.signalTeste()} computed`;
+    } else {
+      return 'NADA!!!';
+    }
+  });
 
   executar() {
     // Set: Define o signal como um novo valor absoluto.
@@ -39,5 +47,9 @@ export class AppComponent {
 
   funcaoTeste() {
     return console.log('funcaoTeste');
+  }
+
+  alterar() {
+    this.mostrarContador.update(atual => !atual);
   }
 }
